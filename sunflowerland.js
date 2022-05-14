@@ -1,1 +1,159 @@
-;eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('(r p(){C.D("[x]","x O.");p i(a){P Q R((E)=>S(E,a))}r p F(){l T=0;l U=0;8 a=9.m("V W");8 b=X;6(a.7>0){q(l 4=0;4<b;4++){8 c=a[4].f(\'s\')6(c.7==0){a[4].B[3].g();j i(h)}G{t{6(a[4].f(\'s\')[0].k==\'-1\'){a[4].B[3].g();j i(h)}G 6(a[4].f(\'s\')[0].k==\'+1\'){a[4].B[3].g();j i(h)}}u(v){}}}}}r p Y(){8 a=9.H(\'I\');6(a.y.7>0){a.y[0].g()}j i(h);8 b=9.m(\'n-o\');6(b.7>0){8 c=b[0].f(\'s\')q(l 4=0;4<c.7;4++){6(c[4].k==\'J\')c[4].g();j i(h)}}8 d=9.f("w");6(d.7>0){q(l 4=0;4<d.7;4++){6(d[4].k==\'J 10\')d[4].g()}}j i(h)}r p Z(){8 a=9.H(\'I\');6(a.y.7>0){a.y[0].g()}j i(h);8 b=9.m(\'n-o\');6(b.7>0){8 c=b[0].f(\'s\')q(l 4=0;4<c.7;4++){6(c[4].k==\'K\')c[4].g();j i(h)}}j i(h);8 d=9.f("w");6(d.7>0){q(l 4=0;4<d.7;4++){6(d[4].k==\'K 11\')d[4].g()}}j i(h);j i(h);8 e=9.f("w");6(e.7>0){q(l 4=0;4<e.7;4++){6(e[4].k==\'12\')d[4].g()}}}r p L(){8 a=9.m(\'n-o\');6(a.7>0&&a[0].f(\'s\')[0].k==\'13! 14 15 a 16\'){t{9.m(\'n-o\')[0].f(\'z\')[0].g()}u(v){}t{9.m(\'n-o\')[0].f(\'z\')[1].g()}u(v){}t{9.m(\'n-o\')[0].f(\'z\')[2].g()}u(v){}t{9.m(\'n-o\')[0].f(\'z\')[3].g()}u(v){}t{j i(17);8 b=9.m(\'n-o\')[0].f(\'w\')[0]6(b.k==\'18\')b.g()}u(v){}}}r p M(){8 a=9.m(\'n-o\');q(l 4=0;4<a.7;4++){6(a[4].f(\'s\')[0].k==\'19 1a 1b!\')1c.1d.1e()}}r p N(){t{8 a=9.f(\'w\');q(l 4=0;4<a.7;4++){6(a[4].k==\'1f 1g!\')a[4].g()}}u(v){}}A(()=>{M()},5*h);A(()=>{N()},5*h);A(()=>{F()},1h);A(()=>{L()},h);C.D("[x]","x 1i.")})();',62,81,'||||index||if|length|var|document||||||getElementsByTagName|click|1000|sleep|await|innerHTML|let|getElementsByClassName|modal|content|function|for|async|span|try|catch|err|button|Script|children|img|setInterval|childNodes|console|log|resolve|land_task|else|getElementById|shop|Buy|Sell|gift_task|rebot_task|autologin_task|loading|return|new|Promise|setTimeout|step|clock|relative|group|22|buy_task|sell_task||All|Yes|Woohoo|You|found|reward|500|Close|Something|went|wrong|window|location|reload|Lets|farm|15000|loaded'.split('|'),0,{}));
+
+
+(async function () {
+    console.log("[Script]", "Script loading.");
+    function sleep(time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
+    }
+    async function land_task () {
+        let step = 0;
+        let clock = 0;
+      
+        // Auto Sign
+        var lands = document.getElementsByClassName("relative group");
+        var land_nums = 22;
+        if(lands.length > 0){
+          for(let index = 0; index < land_nums; index++){
+            // -1 有盲盒子 +1 空土地 其他 未成熟
+            var land_hole = lands[index].getElementsByTagName('span')
+            if(land_hole.length == 0){
+              lands[index].childNodes[3].click();
+              await sleep(1000);
+            }else{
+              try{
+                if(lands[index].getElementsByTagName('span')[0].innerHTML == '-1'){
+                  lands[index].childNodes[3].click();
+                  await sleep(1000);
+                }else if(lands[index].getElementsByTagName('span')[0].innerHTML == '+1'){
+                  lands[index].childNodes[3].click();
+                  await sleep(1000);
+                }
+              }catch(err) {
+                
+              }
+            }
+          }
+        }
+    }
+  
+    async function buy_task () {
+      
+        // 购买
+        var shop = document.getElementById('shop');
+        if(shop.children.length > 0){
+          shop.children[0].click()
+        }
+        await sleep(1000);
+        var rol = document.getElementsByClassName('modal-content');
+        if(rol.length > 0){
+          var sell = rol[0].getElementsByTagName('span')
+          for(let index = 0; index < sell.length; index++){
+            if(sell[index].innerHTML == 'Buy') sell[index].click();
+            await sleep(1000);
+          }
+          
+        }
+        var buy_btn = document.getElementsByTagName("button");
+        if(buy_btn.length > 0){
+          for(let index = 0; index < buy_btn.length; index++){
+            if(buy_btn[index].innerHTML == 'Buy 10') buy_btn[index].click();
+          }
+          
+        }
+        await sleep(1000);
+    }
+    async function sell_task () {
+      
+        // 购买
+        var shop = document.getElementById('shop');
+        if(shop.children.length > 0){
+          shop.children[0].click()
+        }
+        await sleep(1000);
+        var rol = document.getElementsByClassName('modal-content');
+        if(rol.length > 0){
+          var sell = rol[0].getElementsByTagName('span')
+          for(let index = 0; index < sell.length; index++){
+            if(sell[index].innerHTML == 'Sell') sell[index].click();
+            await sleep(1000);
+          }
+          
+        }
+        await sleep(1000);
+        var sell_btn = document.getElementsByTagName("button");
+        if(sell_btn.length > 0){
+          for(let index = 0; index < sell_btn.length; index++){
+            if(sell_btn[index].innerHTML == 'Sell All') sell_btn[index].click();
+          }
+          
+        }
+        await sleep(1000);
+        await sleep(1000);
+        var yes_btn = document.getElementsByTagName("button");
+        if(yes_btn.length > 0){
+          for(let index = 0; index < yes_btn.length; index++){
+            if(yes_btn[index].innerHTML == 'Yes') sell_btn[index].click();
+          }
+          
+        }
+    }
+  
+    async function gift_task () {
+        var gift = document.getElementsByClassName('modal-content');
+        if(gift.length >0 && gift[0].getElementsByTagName('span')[0].innerHTML == 'Woohoo! You found a reward'){
+          try {
+            document.getElementsByClassName('modal-content')[0].getElementsByTagName('img')[0].click();
+          }
+          catch(err) {
+          }
+          try {
+            document.getElementsByClassName('modal-content')[0].getElementsByTagName('img')[1].click();
+          }
+          catch(err) {
+          }
+          try {
+            document.getElementsByClassName('modal-content')[0].getElementsByTagName('img')[2].click();
+          }
+          catch(err) {
+          }
+          try {
+            document.getElementsByClassName('modal-content')[0].getElementsByTagName('img')[3].click();
+          }
+          catch(err) {
+          }
+          try {
+            await sleep(500);
+            var close_btn = document.getElementsByClassName('modal-content')[0].getElementsByTagName('button')[0]
+            if(close_btn.innerHTML == 'Close') close_btn.click();
+
+          }
+          catch(err) {
+          }
+        }
+        
+    }
+    async function rebot_task () {
+      var rebot = document.getElementsByClassName('modal-content');
+      for(let index = 0; index < rebot.length; index++){
+            if(rebot[index].getElementsByTagName('span')[0].innerHTML == 'Something went wrong!') window.location.reload();
+        }
+    }
+    async function autologin_task () {
+      try {
+        var login_btn = document.getElementsByTagName('button');
+        for(let index = 0; index < login_btn.length; index++){
+            if(login_btn[index].innerHTML == 'Lets farm!') login_btn[index].click();
+        }
+      }
+      catch(err){}
+       
+    }
+    setInterval(() => { rebot_task() }, 5*1000);
+    setInterval(() => { autologin_task() }, 5*1000);
+    setInterval(() => { land_task() }, 15000);
+    // setInterval(() => { buy_task() }, 60000);
+    // setInterval(() => { sell_task() }, 300000);
+    setInterval(() => { gift_task() }, 1000);
+
+    console.log("[Script]", "Script loaded.");
+})();
